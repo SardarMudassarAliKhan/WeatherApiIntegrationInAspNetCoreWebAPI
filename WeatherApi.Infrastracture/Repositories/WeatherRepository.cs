@@ -2,8 +2,6 @@
 using Flurl.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Options;
-using System;
-using System.Threading.Tasks;
 using WeatherApi.Core.Entities;
 using WeatherApi.Core.Interfaces;
 
