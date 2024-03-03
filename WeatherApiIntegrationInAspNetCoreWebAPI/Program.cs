@@ -1,4 +1,3 @@
-using Microsoft.Extensions.Configuration;
 using WeatherApi.Core.Entities;
 using WeatherApi.Core.Interfaces;
 using WeatherApi.Infrastracture.Repositories;
