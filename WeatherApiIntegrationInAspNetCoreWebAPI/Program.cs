@@ -1,4 +1,3 @@
-
 using Microsoft.Extensions.Configuration;
 using WeatherApi.Core.Entities;
 using WeatherApi.Core.Interfaces;
@@ -24,6 +23,18 @@ namespace WeatherApiIntegrationInAspNetCoreWebAPI
             builder.Services.AddScoped<IWeatherService, WeatherService>();
             builder.Services.AddScoped<IWeatherRepository, WeatherRepository>();
 
+            // Add CORS policy
+            builder.Services.AddCors(options =>
+            {
+                options.AddPolicy("AllowAll",
+                    builder =>
+                    {
+                        builder.AllowAnyOrigin()
+                               .AllowAnyMethod()
+                               .AllowAnyHeader();
+                    });
+            });
+
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
@@ -37,6 +48,8 @@ namespace WeatherApiIntegrationInAspNetCoreWebAPI
 
             app.UseAuthorization();
 
+            // Use CORS policy
+            app.UseCors("AllowAll");
 
             app.MapControllers();
 
